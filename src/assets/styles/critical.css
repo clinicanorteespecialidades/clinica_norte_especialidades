@@ -1,0 +1,39 @@
+/* Critical CSS - Above the fold styles */
+/* Carga inmediata para evitar FOUC y mejorar FCP */
+
+/* Reset crítico */
+*,*::before,*::after{box-sizing:border-box}
+body,html{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,sans-serif;line-height:1.6}
+
+/* Header crítico */
+.cls-prevent-header{min-height:96px;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px)}
+@media (min-width:1024px){.cls-prevent-header{min-height:112px}}
+
+/* Hero section crítico */
+.hero-section{min-height:100vh;background:linear-gradient(135deg,#0ea5e9 0%,#3b82f6 100%);position:relative}
+.hero-content{padding:2rem 1rem;display:flex;align-items:center;min-height:100vh}
+
+/* Botones críticos */
+.btn-primary{background:linear-gradient(90deg,#2563eb,#06b6d4);color:#fff;padding:1rem 2rem;border-radius:1rem;border:none;cursor:pointer;font-weight:600;transition:all 0.3s}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 20px 25px -5px rgba(0,0,0,0.1)}
+.btn-primary:focus{outline:none;box-shadow:0 0 0 4px rgba(6,182,212,0.5)}
+
+/* Typography crítico */
+h1{font-size:3rem;font-weight:800;line-height:1.1;margin:0 0 2rem 0;font-family:Poppins,Inter,system-ui,sans-serif}
+@media (min-width:768px){h1{font-size:4rem}}
+@media (min-width:1024px){h1{font-size:5rem}}
+
+/* Footer crítico para CLS */
+.cls-prevent-footer{min-height:600px;background:#1f2937}
+@media (min-width:1024px){.cls-prevent-footer{min-height:500px}}
+
+/* Loading states */
+.loading-skeleton{background:linear-gradient(90deg,#f3f4f6 25%,#e5e7eb 50%,#f3f4f6 75%);background-size:200% 100%;animation:loading 1.5s infinite}
+@keyframes loading{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
+/* Animaciones críticas */
+.animate-fade-in{animation:fadeIn 0.6s ease-out}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* Focus visible para accesibilidad */
+*:focus-visible{outline:2px solid #06b6d4;outline-offset:2px}

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Página de Inicio -->
+  <url>
+    <loc>https://clinicanorteespecialidades.com.co/</loc>
+    <image:image>
+      <image:loc>https://clinicanorteespecialidades.com.co/images/hero/clinica-norte-especialidades-la-union-nariño.jpg</image:loc>
+      <image:caption>Clínica Norte Especialidades SAS - IPS en La Unión, Nariño</image:caption>
+      <image:title>Clínica Norte Especialidades SAS La Unión Nariño</image:title>
+      <image:geo_location>La Unión, Nariño, Colombia</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://clinicanorteespecialidades.com.co/images/hero/atencion-medica-integral-familia.jpg</image:loc>
+      <image:caption>Atención médica integral para toda la familia</image:caption>
+      <image:title>Atención Médica Integral Familia</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://clinicanorteespecialidades.com.co/images/hero/tecnologia-medica-avanzada-ips.jpg</image:loc>
+      <image:caption>Tecnología médica avanzada y equipos de última generación</image:caption>
+      <image:title>Tecnología Médica Avanzada IPS</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://clinicanorteespecialidades.com.co/images/hero/profesionales-salud-certificados.jpg</image:loc>
+      <image:caption>Profesionales de la salud certificados y especializados</image:caption>
+      <image:title>Profesionales Salud Certificados</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://clinicanorteespecialidades.com.co/images/hero/servicios-medicos-especializados.png</image:loc>
+      <image:caption>Servicios médicos especializados en La Unión Nariño</image:caption>
+      <image:title>Servicios Médicos Especializados</image:title>
+    </image:image>
+  </url>
+
+  <!-- Página Nosotros -->
+  <url>
+    <loc>https://clinicanorteespecialidades.com.co/nosotros</loc>
+    <image:image>
+      <image:loc>https://clinicanorteespecialidades.com.co/images/clinic/exterior/clinica-norte-fachada-principal-2024.jpg</image:loc>
+      <image:caption>Fachada principal de Clínica Norte Especialidades SAS 2024</image:caption>
+      <image:title>Clínica Norte Fachada Principal 2024</image:title>
+      <image:geo_location>La Unión, Nariño, Colombia</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://clinicanorteespecialidades.com.co/images/clinic/exterior/clinica-norte-entrada-pacientes.jpg</image:loc>
+      <image:caption>Entrada principal para pacientes con acceso universal</image:caption>
+      <image:title>Clínica Norte Entrada Pacientes</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://clinicanorteespecialidades.com.co/images/clinic/interior/sala-espera-clinica-norte-nariño.jpg</image:loc>
+      <image:caption>Sala de espera cómoda y moderna para pacientes</image:caption>
+      <image:title>Sala Espera Clínica Norte Nariño</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://clinicanorteespecialidades.com.co/images/clinic/interior/consultorio-medicina-general-equipado.jpg</image:loc>
+      <image:caption>Consultorio de medicina general totalmente equipado</image:caption>
+      <image:title>Consultorio Medicina General Equipado</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://clinicanorteespecialidades.com.co/images/clinic/interior/laboratorio-clinico-certificado.jpg</image:loc>
+      <image:caption>Laboratorio clínico certificado con tecnología avanzada</image:caption>
+      <image:title>Laboratorio Clínico Certificado</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://clinicanorteespecialidades.com.co/images/clinic/interior/recepcion-atencion-pacientes.jpg</image:loc>
+      <image:caption>Recepción y atención personalizada a pacientes</image:caption>
+      <image:title>Recepción Atención Pacientes</image:title>
+    </image:image>
+  </url>
+
+  <!-- Página de Noticias -->
+  <url>
+    <loc>https://clinicanorteespecialidades.com.co/noticias</loc>
+    <image:image>
+      <image:loc>https://clinicanorteespecialidades.com.co/images/news/2025/septiembre/campaña-vacunacion-covid-la-union-nariño.jpg</image:loc>
+      <image:caption>Campaña de vacunación COVID-19 en La Unión, Nariño</image:caption>
+      <image:title>Campaña Vacunación COVID La Unión Nariño</image:title>
+      <image:geo_location>La Unión, Nariño, Colombia</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://clinicanorteespecialidades.com.co/images/news/2025/septiembre/nuevo-servicio-cardiologia-especializada.jpg</image:loc>
+      <image:caption>Nuevo servicio de cardiología especializada disponible</image:caption>
+      <image:title>Nuevo Servicio Cardiología Especializada</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://clinicanorteespecialidades.com.co/images/news/2025/septiembre/jornada-salud-preventiva-comunidad.jpg</image:loc>
+      <image:caption>Jornada de salud preventiva para la comunidad</image:caption>
+      <image:title>Jornada Salud Preventiva Comunidad</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://clinicanorteespecialidades.com.co/images/news/2025/septiembre/ampliacion-horarios-atencion-medica.jpg</image:loc>
+      <image:caption>Ampliación de horarios de atención médica</image:caption>
+      <image:title>Ampliación Horarios Atención Médica</image:title>
+    </image:image>
+  </url>
+
+  <!-- Logos e íconos para posicionamiento de marca -->
+  <url>
+    <loc>https://clinicanorteespecialidades.com.co/</loc>
+    <image:image>
+      <image:loc>https://clinicanorteespecialidades.com.co/images/icons/logos/clinica-norte-logo-principal.jpg</image:loc>
+      <image:caption>Logo oficial de Clínica Norte Especialidades SAS</image:caption>
+      <image:title>Clínica Norte Logo Principal</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://clinicanorteespecialidades.com.co/images/icons/logos/clinica-norte-logo-principal.svg</image:loc>
+      <image:caption>Logo vectorial de Clínica Norte Especialidades SAS</image:caption>
+      <image:title>Clínica Norte Logo Principal SVG</image:title>
+    </image:image>
+  </url>
+
+</urlset>

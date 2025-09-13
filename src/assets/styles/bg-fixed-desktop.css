@@ -1,0 +1,5 @@
+/* Utilidad para background-attachment fijo solo en desktop */
+.bg-fixed-desktop { background-attachment: scroll; }
+@media (min-width: 720px) {
+  .bg-fixed-desktop { background-attachment: fixed; }
+}

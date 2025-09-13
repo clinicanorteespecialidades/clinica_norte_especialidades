@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    
+    <!-- Optimización crítica de rendimiento -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="//script.google.com" />
+    <link rel="dns-prefetch" href="//maps.googleapis.com" />
+    
+    <!-- Preload fuentes críticas con fallback inmediato -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" /></noscript>
+    
+    <!-- Preload imagen hero crítica -->
+    <link rel="preload" href="/images/hero/clinica-norte-especialidades-la-union-nariño.jpg" as="image" />
+    
+    <!-- Critical CSS inline para evitar FOUC -->
+    <style>
+      body { 
+        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif; 
+        line-height: 1.6; 
+        margin: 0; 
+        padding: 0;
+        font-display: swap;
+      }
+      h1,h2,h3,h4,h5,h6 { 
+        font-family: Poppins, Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif; 
+        font-display: swap;
+      }
+      /* Layout shift prevention */
+      .cls-prevent-header { min-height: 96px; }
+      .cls-prevent-footer { min-height: 600px; }
+      @media (min-width: 1024px) {
+        .cls-prevent-header { min-height: 112px; }
+        .cls-prevent-footer { min-height: 500px; }
+      }
+    </style>
+    
+    <!-- Favicons optimizados para SEO y compatibilidad -->
+    <link rel="icon" type="image/x-icon" href="/images/icons/logos/clinica-norte-favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/images/icons/logos/clinica-norte-favicon.png" />
+    <link rel="shortcut icon" href="/images/icons/logos/clinica-norte-favicon.ico" />
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/logos/clinica-norte-favicon.svg" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/icons/logos/clinica-norte-favicon.svg" />
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/icons/logos/clinica-norte-favicon.svg" />
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/icons/logos/clinica-norte-favicon.svg" />
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/icons/logos/clinica-norte-favicon.svg" />
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/icons/logos/clinica-norte-favicon.svg" />
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/icons/logos/clinica-norte-favicon.svg" />
+    <link rel="apple-touch-icon" sizes="60x60" href="/images/icons/logos/clinica-norte-favicon.svg" />
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/icons/logos/clinica-norte-favicon.svg" />
+    
+    <!-- Windows/Microsoft tiles -->
+    <meta name="msapplication-TileImage" content="/images/icons/logos/clinica-norte-favicon.svg" />
+    <meta name="msapplication-square70x70logo" content="/images/icons/logos/clinica-norte-favicon.svg" />
+    <meta name="msapplication-square150x150logo" content="/images/icons/logos/clinica-norte-favicon.svg" />
+    <meta name="msapplication-wide310x150logo" content="/images/icons/logos/clinica-norte-favicon.svg" />
+    <meta name="msapplication-square310x310logo" content="/images/icons/logos/clinica-norte-favicon.svg" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0ea5e9" />
+    <meta name="msapplication-TileColor" content="#0ea5e9" />
+    <meta name="format-detection" content="telephone=yes" />
+    
+    <!-- SEO Optimizado -->
+    <meta name="author" content="Clínica Norte Especialidades SAS" />
+    <meta name="language" content="es-CO" />
+    <meta name="geo.region" content="CO-NAR" />
+    <meta name="geo.placename" content="La Unión, Nariño, Colombia" />
+    <meta name="geo.position" content="1.6014;-77.0683" />
+    <meta name="ICBM" content="1.6014, -77.0683" />
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+    
+    <title>Clínica Norte Especialidades SAS - IPS Certificada La Unión, Nariño | Citas Médicas</title>
+    <meta name="description" content="🏥 Clínica Norte Especialidades SAS: IPS certificada en La Unión, Nariño. ✅ Servicios médicos integrales, especialistas calificados, tecnología de vanguardia. 📅 Agenda tu cita médica online." />
+    <meta name="keywords" content="clínica La Unión Nariño, IPS certificada, citas médicas online, especialistas médicos, servicios salud Nariño, consulta médica, medicina general, exámenes médicos" />
+    
+    <!-- SEO Adicional -->
+    <link rel="canonical" href="https://clinicanorteespecialidades.com.co/" />
+    <meta property="og:url" content="https://clinicanorteespecialidades.com.co/" />
+    <meta property="og:site_name" content="Clínica Norte Especialidades SAS" />
+    <meta property="og:image" content="https://clinicanorteespecialidades.com.co/images/icons/logos/clinica-norte-logo-principal.jpg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Clínica Norte Especialidades SAS - IPS en La Unión, Nariño" />
+    <meta property="og:description" content="Clínica Norte Especialidades SAS: IPS certificada en La Unión, Nariño. Servicios médicos integrales, especialistas calificados y tecnología de vanguardia." />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Clínica Norte Especialidades SAS - IPS en La Unión, Nariño" />
+    <meta name="twitter:description" content="Clínica Norte Especialidades SAS: IPS certificada en La Unión, Nariño. Servicios médicos integrales, especialistas calificados y tecnología de vanguardia." />
+    <meta name="twitter:image" content="https://clinicanorteespecialidades.com.co/images/icons/logos/clinica-norte-logo-principal.jpg" />
+    
+    <!-- Referencia al browserconfig para Windows -->
+    <meta name="msapplication-config" content="/browserconfig.xml" />
+    
+    <!-- Preconnect para mejorar rendimiento -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- DNS Prefetch para recursos externos -->
+    <link rel="dns-prefetch" href="//script.google.com">
+    <link rel="dns-prefetch" href="//maps.googleapis.com">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

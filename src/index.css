@@ -1,0 +1,363 @@
+/* Fonts - Removemos el @import para evitar bloqueo */
+/* Las fuentes se cargan en index.html con preload */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS Variables */
+:root {
+  --clinic-primary: #0ea5e9;
+  --clinic-secondary: #64748b;
+  --clinic-accent: #10b981;
+  --clinic-text: #1e293b;
+  --clinic-text-light: #64748b;
+  --clinic-bg: #ffffff;
+  --clinic-bg-light: #f8fafc;
+}
+
+/* Dark mode variables */
+:root.dark {
+  --clinic-text: #f1f5f9;
+  --clinic-text-light: #cbd5e1;
+  --clinic-bg: #0f172a;
+  --clinic-bg-light: #1e293b;
+}
+
+/* Base Styles - Con fallbacks para evitar FOIT */
+body {
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--clinic-text);
+  background-color: var(--clinic-bg);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-display: swap; /* Evita FOIT */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 600;
+  line-height: 1.2;
+  font-display: swap; /* Evita FOIT */
+}
+
+/* Custom Component Classes */
+@layer components {
+  .btn-primary {
+    @apply bg-primary-600 hover:bg-primary-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 shadow-sm hover:shadow-md;
+  }
+  
+  .btn-secondary {
+    @apply bg-white hover:bg-gray-50 text-primary-600 font-medium py-3 px-6 rounded-lg border border-primary-600 transition-colors duration-200;
+  }
+  
+  .btn-outline-white {
+    @apply bg-transparent hover:bg-white hover:text-primary-600 text-white font-medium py-3 px-6 rounded-lg border border-white transition-colors duration-200;
+  }
+  
+  .card {
+    @apply bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow duration-200;
+  }
+  
+  .section-padding {
+    @apply py-16 md:py-20 lg:py-24;
+  }
+  
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .text-heading {
+    @apply text-gray-900 font-heading;
+  }
+  
+  .text-body {
+    @apply text-gray-600 leading-relaxed;
+  }
+
+  /* Modern form controls powered by @tailwindcss/forms */
+  .form-input {
+    @apply block w-full rounded-lg border-gray-300 dark:border-gray-600 shadow-sm focus:border-primary-500 focus:ring-primary-500 px-4 py-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 transition-colors duration-300;
+  }
+  .form-textarea {
+    @apply block w-full rounded-lg border-gray-300 dark:border-gray-600 shadow-sm focus:border-primary-500 focus:ring-primary-500 px-4 py-3 resize-y bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 transition-colors duration-300;
+  }
+  .form-select {
+    @apply block w-full rounded-lg border-gray-300 dark:border-gray-600 shadow-sm focus:border-primary-500 focus:ring-primary-500 px-4 py-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 transition-colors duration-300;
+  }
+  .form-checkbox {
+    @apply h-4 w-4 text-primary-600 border-gray-300 dark:border-gray-600 rounded focus:ring-primary-500 bg-white dark:bg-gray-800 transition-colors duration-300;
+  }
+}
+
+/* Utilities */
+@layer utilities {
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 0.2s;
+    animation-fill-mode: both;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 0.4s;
+    animation-fill-mode: both;
+  }
+
+  .animation-delay-600 {
+    animation-delay: 0.6s;
+    animation-fill-mode: both;
+  }
+
+  .animation-delay-800 {
+    animation-delay: 0.8s;
+    animation-fill-mode: both;
+  }
+
+  .animation-delay-1000 {
+    animation-delay: 1s;
+    animation-fill-mode: both;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+}
+
+/* Leaflet Map Styles */
+.leaflet-container {
+  border-radius: 16px;
+  overflow: hidden;
+  transition: filter 0.3s ease;
+}
+
+/* Dark mode filter for map tiles */
+:root.dark .leaflet-container {
+  filter: brightness(0.8) contrast(1.2) hue-rotate(15deg);
+}
+
+/* Custom marker styles */
+.clinic-map-marker {
+  background: transparent;
+  border: none;
+}
+
+.clinic-marker {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clinic-marker-inner {
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.6);
+  border: 3px solid white;
+  position: relative;
+}
+
+:root.dark .clinic-marker-inner {
+  border: 3px solid #1e293b;
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.8);
+}
+
+.clinic-marker-inner svg {
+  color: white;
+}
+
+/* Compact/Simple marker styles */
+.simple-map-marker {
+  background: transparent;
+  border: none;
+}
+
+.simple-marker {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.simple-marker-inner {
+  width: 20px;
+  height: 20px;
+  background: #0ea5e9;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(14, 165, 233, 0.6);
+  border: 3px solid white;
+}
+
+:root.dark .simple-marker-inner {
+  border: 3px solid #1e293b;
+  box-shadow: 0 2px 8px rgba(14, 165, 233, 0.8);
+}
+
+.simple-marker-inner svg {
+  color: white;
+}
+
+/* Popup personalizado */
+.clinic-popup .leaflet-popup-content-wrapper {
+  @apply bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-600;
+  padding: 0;
+}
+
+.clinic-popup .leaflet-popup-content {
+  margin: 0;
+  min-width: 280px;
+  @apply text-gray-900 dark:text-gray-100;
+}
+
+.clinic-popup .leaflet-popup-tip {
+  @apply bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-600;
+}
+
+/* Controles del mapa */
+.leaflet-control-zoom a {
+  @apply bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300;
+}
+
+.leaflet-control-zoom a:hover {
+  @apply bg-gray-50 dark:bg-gray-700 border-gray-400 dark:border-gray-500;
+}
+
+/* Attribution */
+.leaflet-control-attribution {
+  @apply bg-white dark:bg-gray-800 bg-opacity-80 dark:bg-opacity-80 text-gray-600 dark:text-gray-400 text-xs;
+}
+
+/* WhatsApp Button Pulse Animation */
+.whatsapp-pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+
+
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.animate-slideIn {
+  animation: slideIn 0.4s ease-out forwards;
+}
+
+/* 🎯 CLS Prevention Classes */
+.cls-prevent-footer {
+  min-height: 600px;
+}
+
+@media (min-width: 1024px) {
+  .cls-prevent-footer {
+    min-height: 500px;
+  }
+}
+
+.cls-prevent-header {
+  min-height: 96px;
+}
+
+@media (min-width: 1024px) {
+  .cls-prevent-header {
+    min-height: 112px;
+  }
+}
+
+.cls-skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+.dark .cls-skeleton {
+  background: linear-gradient(90deg, #374151 25%, #4b5563 50%, #374151 75%);
+  background-size: 200% 100%;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="260" height="80" viewBox="0 0 260 80">
+  <defs>
+    <clipPath id="clip-_30-Day-Reset-Heart-Health-turquoise-260x80">
+      <rect width="260" height="80"/>
+    </clipPath>
+  </defs>
+  <g id="_30-Day-Reset-Heart-Health-turquoise-260x80" data-name="30-Day-Reset-Heart-Health-turquoise-260x80" clip-path="url(#clip-_30-Day-Reset-Heart-Health-turquoise-260x80)">
+    <rect id="Rectangle_2949" data-name="Rectangle 2949" width="260" height="86.011" fill="none"/>
+    <g id="Group_828" data-name="Group 828" transform="translate(94.45 13.617)">
+      <path id="Path_107736" data-name="Path 107736" d="M16.438,48.262A116.449,116.449,0,0,0,33.183,62.088S64.817,41.431,64.817,20.764a15.824,15.824,0,1,0-31.644,0A15.95,15.95,0,0,0,17.351,4.69,15.941,15.941,0,0,0,1.55,20.774c0,5.161,1.976,10.334,4.941,15.179" fill="none" stroke="#00778b" stroke-miterlimit="10" stroke-width="2.5"/>
+      <path id="Path_107737" data-name="Path 107737" d="M1.55,37.565H14.22l3.959-5.711L22.735,40.4,27.728,25.65,32.4,37.575h5.869" transform="translate(0 3.231)" fill="none" stroke="#00778b" stroke-linejoin="round" stroke-width="2.5"/>
+    </g>
+  </g>
+</svg>
