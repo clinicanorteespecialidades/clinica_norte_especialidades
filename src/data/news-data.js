@@ -1,24 +1,23 @@
 // Noticias de la clínica (contenido estático)
 export const NEWS_ARTICLES = [
   {
-    id: 'nueva-sede-norte',
-    title: 'Clínica Norte Especialidades SAS inaugura nueva sede',
-    summary: 'Ampliamos nuestros servicios con una nueva sede equipada con tecnología de última generación.',
+    id: 'Convocatoria Asociacion de Usuarios',
+    title: 'Clínica Norte Especialidades SAS convoca la ciudadania a conformar parte de la Asociación de Usuarios',
+    summary: 'Invitamos a todos los usuarios a participar en la conformación de nuestra Asociación de Usuarios para fortalecer la comunicación y mejorar nuestros servicios.',
     content: `
-La Clínica Norte Especialidades SAS se complace en anunciar la inauguración de su nueva sede ubicada en La Unión, Nariño. Esta nueva instalación cuenta con:
+La Clínica Norte Especialidades SAS se complace en anunciar la creación de la Asociación de Usuarios, un espacio de participación y diálogo entre la comunidad y nuestros profesionales de la salud. Esta iniciativa busca:
 
-- Equipos médicos de última generación
-- Salas de cirugía especializadas
-- Laboratorio clínico ampliado
-- Área de imagenología completa
-- Consultorios especializados
+- Fortalecer la comunicación con nuestros usuarios
+- Recoger sugerencias y necesidades de la comunidad
+- Mejorar la calidad de nuestros servicios
 
-La nueva sede permitirá atender a más pacientes y ofrecer servicios médicos de mayor complejidad, reafirmando nuestro compromiso con la salud de la comunidad.
+Invitamos a todos los interesados a inscribirse y ser parte activa de esta nueva etapa en la Clínica Norte Especialidades.
+Fecha de inscripción: 4 de octubre de 2025 a las 3 PM.
     `,
-    date: '2024-01-15',
+    date: '2025-09-25',
     category: 'Institucional',
-    image: '/images/news/2025/septiembre/nueva-sede-norte-la-union-narino.jpg',
-    author: 'Comunicaciones',
+    image: '/images/news/2025/septiembre/convocatoria_asociacion_usuarios_2025.jpg',
+    author: 'Gerencia General',
     featured: true
   },
   {
