@@ -2,7 +2,7 @@
 export const NEWS_ARTICLES = [
   {
     id: 'Convocatoria Asociacion de Usuarios',
-    title: 'Clínica Norte Especialidades SAS convoca la ciudadania a conformar parte de la Asociación de Usuarios',
+    title: 'Convoca a la ciudadania a conformar parte de la Asociación de Usuarios',
     summary: 'Invitamos a todos los usuarios a participar en la conformación de nuestra Asociación de Usuarios para fortalecer la comunicación y mejorar nuestros servicios.',
     content: `
 La Clínica Norte Especialidades SAS se complace en anunciar la convocatoria a la Asociación de Usuarios, un espacio de participación y diálogo entre la comunidad y nuestros profesionales de la salud. Esta iniciativa busca:
