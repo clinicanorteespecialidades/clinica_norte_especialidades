@@ -5,13 +5,13 @@ export const NEWS_ARTICLES = [
     title: 'Clínica Norte Especialidades SAS convoca la ciudadania a conformar parte de la Asociación de Usuarios',
     summary: 'Invitamos a todos los usuarios a participar en la conformación de nuestra Asociación de Usuarios para fortalecer la comunicación y mejorar nuestros servicios.',
     content: `
-La Clínica Norte Especialidades SAS se complace en anunciar la creación de la Asociación de Usuarios, un espacio de participación y diálogo entre la comunidad y nuestros profesionales de la salud. Esta iniciativa busca:
+La Clínica Norte Especialidades SAS se complace en anunciar la convocatoria a la Asociación de Usuarios, un espacio de participación y diálogo entre la comunidad y nuestros profesionales de la salud. Esta iniciativa busca:
 
 - Fortalecer la comunicación con nuestros usuarios
 - Recoger sugerencias y necesidades de la comunidad
 - Mejorar la calidad de nuestros servicios
 
-Invitamos a todos los interesados a inscribirse y ser parte activa de esta nueva etapa en la Clínica Norte Especialidades.
+Invitamos a todos los interesados a inscribirse y ser parte activa en cada etapa de la Clínica Norte Especialidades.
 Fecha de inscripción: 4 de octubre de 2025 a las 3 PM.
     `,
     date: '2025-09-25',
