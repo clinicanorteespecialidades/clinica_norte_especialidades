@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import {
   HeartIcon,
   UserGroupIcon,
@@ -25,6 +26,53 @@ import { useModal } from '../../shared/hooks/useModal';
 import SEOHead from '../../shared/components/seo/SEOHead';
 import { generateClinicStructuredData, generateLocalBusinessStructuredData } from '../../shared/utils/structuredData';
 import LatestNews from '../../shared/components/ui/LatestNews';
+
+// VideoTour component: embeds a YouTube player but does NOT autoplay.
+// Replace YOUTUBE_VIDEO_ID with the actual video id (e.g. 'dQw4w9WgXcQ').
+const YOUTUBE_VIDEO_ID = 'REPLACE_WITH_VIDEO_ID';
+
+function VideoTour() {
+  const [showPlayer, setShowPlayer] = useState(false);
+  const poster = '/images/hero/servicios-medicos-especializados.png';
+  const embedSrc = `https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?rel=0&modestbranding=1&controls=1`;
+
+  return (
+    <div className="relative">
+      {!showPlayer ? (
+        <div className="relative rounded-2xl overflow-hidden shadow-lg">
+          <img src={poster} alt="Tour de instalaciones - Clínica Norte" className="w-full h-auto object-cover block" />
+          <button
+            type="button"
+            onClick={() => setShowPlayer(true)}
+            className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/40 transition-colors duration-200"
+            aria-label="Abrir video tour de instalaciones"
+          >
+            <span className="flex items-center justify-center w-20 h-20 bg-white/90 rounded-full shadow-lg">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M5 3v18l15-9L5 3z" fill="#0b74ed" />
+              </svg>
+            </span>
+          </button>
+
+          <div className="absolute left-4 bottom-4 bg-white/90 text-sm rounded-full px-3 py-1 text-gray-800 font-medium">Tour rápido • 60–90s</div>
+        </div>
+      ) : (
+        <div className="relative rounded-2xl overflow-hidden shadow-lg">
+          <div className="w-full aspect-video bg-black">
+            <iframe
+              src={embedSrc}
+              title="Tour de instalaciones - Clínica Norte"
+              frameBorder="0"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="w-full h-full"
+            />
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
 
 const HomePage = () => {
   const { isOpen: isAppointmentOpen, openModal: openAppointment, closeModal: closeAppointment } = useModal();
@@ -271,6 +319,24 @@ const HomePage = () => {
 
   {/* Latest News Widget */}
   <LatestNews count={3} />
+
+      {/* Video / Tour Rápido - 60-90s (autoplay desactivado) */}
+      <section className="bg-white dark:bg-gray-900 section-padding transition-colors duration-300">
+        <div className="container-custom">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 dark:text-white mb-3">
+              Tour rápido — Nuestras instalaciones
+            </h2>
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              Video mostrando nuestras áreas de atención y tecnología. (Autoplay desactivado — toca reproducir)
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <VideoTour />
+          </div>
+        </div>
+      </section>
 
   {/* Enhanced Features Section */}
       <section className="bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900/20 section-padding transition-all duration-300">
