@@ -108,24 +108,24 @@ const ServicesPage = () => {
             <div className="space-y-6">
               {[
                 {
-                  title: 'Programa “De frente contra el enemigo silencioso”',
-                  text: 'Sabiendo que la hipertensión arterial es una enfermedad silenciosa que afecta a gran parte de la población, ofrecemos detección temprana gratuita.'
+                  title: 'PROGRAMA “DE FRENTE CONTRA EL ENEMIGO SILENCIOSO” (LA HIPERTENSION ARTERIAL)',
+                  text: 'Sabiendo que la hipertensión arterial es una enfermedad silenciosa y muchos pacientes tienen dicha patología y lo desconocen, se realiza tamizaje de HTA todos los días de manera gratuita, Diseñado para la pesquisa de pacientes sin diagnóstico de Hipertensión Arterial, pacientes que ya tienen diagnostico o los hipertensos mal controlados (solo debes asistir a la institución en los horarios de atención de lunes a viernes, no importa tu edad).'
                 },
                 {
-                  title: 'Programa “Los 10 Dulces”',
-                  text: 'Dirigido a la detección de diabetes: prueba de glucosa gratuita para identificar factores de riesgo tempranamente.'
+                  title: 'PROGRAMA “LOS 10 DULCES”',
+                  text: 'Teniendo en cuenta que muchos pacientes aparentemente sanos cursan con diabetes sin saberlo, se realiza prueba de glucosa de manera gratuita a 10 pacientes por día de lunes a viernes, mayores a 50 años, (solo debes asistir a la institución en los horarios de oficina, se recomienda asistir en ayunas o después de 2 o más horas de ingerir alimentos.'
                 },
                 {
-                  title: 'Programa “Los 10 con Ritmo”',
-                  text: 'Para detectar trastornos del ritmo cardiaco como fibrilación auricular y otros problemas cardiovasculares.'
+                  title: 'PROGRAMA “POBLACION INFORMADA”',
+                  text: 'Programa por redes sociales institucionales donde se dará a conocer diferentes temáticas de salud, enfocados en prevención de la enfermedad y temas de interés solicitados por los pacientes.'
                 },
                 {
-                  title: 'Programa “Población Informada”',
-                  text: 'Programa por redes sociales institucionales para divulgar temáticas de salud y promover estilos de vida saludables.'
+                  title: 'PROGRAMA “LOS 10 CON RITMO”',
+                  text: 'Con el fin de detectar trastornos del ritmo cardiaco como fibrilación auricular que es una de las causas de Enfermedad Cerebro Vascular (“trombosis cerebral”) y otras patologías mediante electrocardiograma, se realiza 10 EKG gratuitos por día a pacientes mayores de 50 años,interpretados por especialista en cardiología.'
                 },
                 {
-                  title: 'Programa “Adulto Mayor Sano y Fuerte”',
-                  text: 'Propuesta de actividad física con tutor para el adulto mayor sano, promoviendo el envejecimiento activo y saludable.'
+                  title: 'PROGRAMA “ADULTO MAYOR SANO Y FUERTE”',
+                  text: 'Propuesta de actividad física con tutor para el adulto mayor sano y también para los pacientes con patologías crónicas como Hipertensión arterial, Diabetes, Hipercolesterolemia y Obesidad.'
                 }
               ].map((program, index) => (
                 <div key={index} className="card p-6 bg-gray-50 dark:bg-gray-700 rounded-lg transition-colors duration-300">
