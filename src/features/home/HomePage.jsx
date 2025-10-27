@@ -21,6 +21,7 @@ import { AppointmentForm } from '../../shared/components/forms';
 import { useModal } from '../../shared/hooks/useModal';
 import SEOHead from '../../shared/components/seo/SEOHead';
 import { generateClinicStructuredData, generateLocalBusinessStructuredData } from '../../shared/utils/structuredData';
+import LatestNews from '../../shared/components/ui/LatestNews';
 
 const HomePage = () => {
   const { isOpen: isAppointmentOpen, openModal: openAppointment, closeModal: closeAppointment } = useModal();
@@ -265,7 +266,10 @@ const HomePage = () => {
       </section>
 
 
-      {/* Enhanced Features Section */}
+  {/* Latest News Widget */}
+  <LatestNews count={3} />
+
+  {/* Enhanced Features Section */}
       <section className="bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900/20 section-padding transition-all duration-300">
         <div className="container-custom">
           <div className="text-center mb-20">

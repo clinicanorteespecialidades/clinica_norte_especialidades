@@ -24,9 +24,10 @@ const NewsPage = () => {
   const filteredNews =
     selectedCategory === "Todas"
       ? NEWS_ARTICLES
-      : NEWS_ARTICLES.filter(
-        (article) => article.category === selectedCategory
-      );
+      : NEWS_ARTICLES.filter((article) => article.category === selectedCategory);
+
+  const featuredArticles = filteredNews.filter((a) => a.featured);
+  const regularArticles = filteredNews.filter((a) => !a.featured);
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -35,6 +36,27 @@ const NewsPage = () => {
       month: "long",
       day: "numeric",
     });
+  };
+
+  // utility: get embeddable youtube url if needed
+  const getYouTubeEmbedUrl = (url) => {
+    if (!url) return null;
+    try {
+      const u = new URL(url);
+      // youtube.com/watch?v=ID or youtu.be/ID
+      if (u.hostname.includes('youtu.be')) {
+        const id = u.pathname.slice(1);
+        return `https://www.youtube.com/embed/${id}`;
+      }
+      if (u.hostname.includes('youtube.com')) {
+        return `https://www.youtube.com/embed/${u.searchParams.get('v')}`;
+      }
+      // if already embed url, return as is
+      if (url.includes('embed')) return url;
+      return null;
+    } catch {
+      return null;
+    }
   };
 
   const handleShare = async (article) => {
@@ -229,85 +251,71 @@ const NewsPage = () => {
               {filteredNews.length} {filteredNews.length === 1 ? 'artículo encontrado' : 'artículos encontrados'}
             </p>
           </div>
-
-          {/* News Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredNews.map((article) => (
-              <div 
-                key={article.id} 
-                className="group bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-700 overflow-hidden"
-              >
-                {/* Image Container */}
-                <div className="relative w-full h-48 bg-gray-200 dark:bg-gray-700 overflow-hidden">
-                  <img
-                    src={article.image}
-                    alt={article.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  
-                  {/* Featured Badge */}
-                  {article.featured && (
-                    <div className="absolute top-4 left-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full flex items-center space-x-1">
-                      <FireIcon className="w-3 h-3" />
-                      <span>Destacado</span>
+          {/* Featured Articles (separated) */}
+          {featuredArticles.length > 0 && (
+            <div className="mb-12">
+              <h3 className="text-2xl font-heading font-bold text-gray-900 dark:text-white mb-6">Artículos Destacados</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-6">
+                {featuredArticles.map((article) => (
+                  <div key={article.id} id={`article-${encodeURIComponent(article.id)}`} className="group bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-700 overflow-hidden">
+                    <div className="relative w-full h-56 bg-gray-200 dark:bg-gray-700 overflow-hidden">
+                      <img src={article.image} alt={article.title} className="w-full h-full object-cover" />
                     </div>
-                  )}
-
-                  {/* Category Badge */}
-                  <div className="absolute top-4 right-4 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm text-primary-600 dark:text-primary-400 text-xs font-medium px-3 py-1 rounded-full">
-                    {article.category}
-                  </div>
-                </div>
-
-                {/* Card Content */}
-                <div className="p-6">
-                  {/* Meta Information */}
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center space-x-2">
-                      <CalendarIcon className="w-4 h-4 text-gray-500 dark:text-gray-400" />
-                      <span className="text-sm text-gray-500 dark:text-gray-400">
-                        {formatDate(article.date)}
-                      </span>
-                    </div>
-                    <div className="flex items-center space-x-1 text-gray-500 dark:text-gray-400">
-                      <ClockIcon className="w-4 h-4" />
-                      {/* <span className="text-xs">3 min</span> */}
+                    <div className="p-6">
+                      <div className="flex items-center justify-between mb-3">
+                        <div className="text-sm text-gray-500 dark:text-gray-400">{formatDate(article.date)}</div>
+                        <div className="text-sm text-gray-500 dark:text-gray-400">{article.author}</div>
+                      </div>
+                      <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-2 line-clamp-2">{article.title}</h4>
+                      <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">{article.summary}</p>
+                      <div className="flex justify-end">
+                        <button onClick={() => setSelectedArticle(article)} className="inline-flex items-center space-x-2 bg-yellow-400 hover:bg-yellow-500 text-white font-medium text-sm py-2 px-4 rounded-lg transition-all duration-300">
+                          <span>Leer más</span>
+                          <ArrowRightIcon className="w-4 h-4" />
+                        </button>
+                      </div>
                     </div>
                   </div>
-
-                  {/* Title */}
-                  <h3 className="text-xl font-heading font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300 line-clamp-2">
-                    {article.title}
-                  </h3>
-
-                  {/* Summary */}
-                  <p className="text-gray-600 dark:text-gray-300 mb-6 line-clamp-3 leading-relaxed">
-                    {article.summary}
-                  </p>
-
-                  {/* Footer */}
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-2">
-                      <UserIcon className="w-4 h-4 text-gray-500 dark:text-gray-400" />
-                      <span className="text-sm text-gray-500 dark:text-gray-400">
-                        {article.author}
-                      </span>
-                    </div>
-                    <button
-                      onClick={() => setSelectedArticle(article)}
-                      className="group/btn inline-flex items-center space-x-2 bg-primary-600 hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-600 text-white font-medium text-sm py-2 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-                      aria-label={`Leer artículo completo: ${article.title}`}
-                      type="button"
-                    >
-                      <span>Leer más</span>
-                      <ArrowRightIcon className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
-                    </button>
-                  </div>
-                </div>
+                ))}
               </div>
-            ))}
+            </div>
+          )}
+
+          {/* Regular Articles */}
+          <div>
+            <h3 className="text-2xl font-heading font-bold text-gray-900 dark:text-white mb-6">Otras Noticias</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {regularArticles.map((article) => (
+                <div key={article.id} id={`article-${encodeURIComponent(article.id)}`} className="group bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-700 overflow-hidden">
+                  <div className="relative w-full h-48 bg-gray-200 dark:bg-gray-700 overflow-hidden">
+                    <img src={article.image} alt={article.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                  </div>
+                  <div className="p-6">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center space-x-2">
+                        <CalendarIcon className="w-4 h-4 text-gray-500 dark:text-gray-400" />
+                        <span className="text-sm text-gray-500 dark:text-gray-400">{formatDate(article.date)}</span>
+                      </div>
+                      <div className="flex items-center space-x-1 text-gray-500 dark:text-gray-400">
+                        <ClockIcon className="w-4 h-4" />
+                      </div>
+                    </div>
+                    <h3 className="text-xl font-heading font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300 line-clamp-2">{article.title}</h3>
+                    <p className="text-gray-600 dark:text-gray-300 mb-6 line-clamp-3 leading-relaxed">{article.summary}</p>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-2">
+                        <UserIcon className="w-4 h-4 text-gray-500 dark:text-gray-400" />
+                        <span className="text-sm text-gray-500 dark:text-gray-400">{article.author}</span>
+                      </div>
+                      <button onClick={() => setSelectedArticle(article)} className="group/btn inline-flex items-center space-x-2 bg-primary-600 hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-600 text-white font-medium text-sm py-2 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                        <span>Leer más</span>
+                        <ArrowRightIcon className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Empty State */}
@@ -423,6 +431,22 @@ const NewsPage = () => {
                 </div>
               </div>
 
+              {/* Video embed (if provided) */}
+              {selectedArticle.videoUrl && (
+                <div className="mb-6">
+                  <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                    <iframe
+                      className="absolute inset-0 w-full h-full rounded-lg"
+                      src={getYouTubeEmbedUrl(selectedArticle.videoUrl)}
+                      title={selectedArticle.title}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
+                </div>
+              )}
+
               {/* Article Content - Optimized typography for mobile */}
               <div className="prose prose-sm sm:prose-base md:prose-lg max-w-none dark:prose-invert">
                 <div className="text-gray-700 dark:text-gray-300 whitespace-pre-line leading-relaxed text-base sm:text-lg">
@@ -482,6 +506,17 @@ const NewsPage = () => {
                         </>
                       )}
                     </button>
+                    {/* External Link button - open in new tab if provided */}
+                    {selectedArticle.externalLink && (
+                      <a
+                        href={selectedArticle.externalLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 sm:py-2 rounded-lg bg-white/90 text-primary-700 hover:bg-white transition-colors duration-200 font-medium shadow-sm"
+                      >
+                        <span>Ver fuente</span>
+                      </a>
+                    )}
                     <button 
                       onClick={() => setSelectedArticle(null)}
                       className="w-full sm:w-auto bg-gray-600 hover:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600 text-white px-6 py-3 sm:py-2 rounded-lg transition-colors duration-300 font-medium transform hover:scale-105"
