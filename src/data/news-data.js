@@ -20,6 +20,20 @@ Fecha de inscripción: 4 de octubre de 2025 a las 3 PM.
     author: 'Gerencia General',
     featured: true
   },
+  // Example external link for the first article (opens in new tab from modal)
+  {
+    id: 'convocatoria-enlace',
+    title: 'Convocatoria - más información en PDF',
+    summary: 'Más detalles y formulario disponible en un documento PDF externo.',
+    content: `Consulta el PDF con la información completa y el formulario de inscripción.`,
+    date: '2025-09-24',
+    category: 'Institucional',
+    image: '/images/news/2025/septiembre/consultorio-medicina-general-equipado.jpg',
+    author: 'Gerencia General',
+    featured: false,
+    externalLink: 'https://example.com/convocatoria-inscripcion.pdf',
+    videoUrl: 'https://www.youtube.com/watch?v=3e9Wa3xaO44'
+  },
   {
     id: 'jornada-vacunacion',
     title: 'Jornada de vacunación contra la influenza',

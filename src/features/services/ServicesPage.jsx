@@ -8,8 +8,10 @@ import {
   SparklesIcon,
   UserGroupIcon,
   ClockIcon,
-  CheckBadgeIcon 
+  CheckBadgeIcon
 } from '@heroicons/react/24/outline';
+import { Leaf, Brain, HeartPulse, Beaker, Heart } from "lucide-react";
+
 import MedicalServiceIcon from '../../shared/components/ui/MedicalServiceIcon';
 import { MEDICAL_SERVICES } from '../../data/medical-data';
 import { ROUTES } from '../../shared/constants/config';
@@ -106,24 +108,24 @@ const ServicesPage = () => {
             <div className="space-y-6">
               {[
                 {
-                  title: 'Programa “De frente contra el enemigo silencioso”',
-                  text: 'Sabiendo que la hipertensión arterial es una enfermedad silenciosa que afecta a gran parte de la población, ofrecemos detección temprana gratuita.'
+                  title: 'PROGRAMA “DE FRENTE CONTRA EL ENEMIGO SILENCIOSO” (LA HIPERTENSION ARTERIAL)',
+                  text: 'Sabiendo que la hipertensión arterial es una enfermedad silenciosa y muchos pacientes tienen dicha patología y lo desconocen, se realiza tamizaje de HTA todos los días de manera gratuita, Diseñado para la pesquisa de pacientes sin diagnóstico de Hipertensión Arterial, pacientes que ya tienen diagnostico o los hipertensos mal controlados (solo debes asistir a la institución en los horarios de atención de lunes a viernes, no importa tu edad).'
                 },
                 {
-                  title: 'Programa “Los 10 Dulces”',
-                  text: 'Dirigido a la detección de diabetes: prueba de glucosa gratuita para identificar factores de riesgo tempranamente.'
+                  title: 'PROGRAMA “LOS 10 DULCES”',
+                  text: 'Teniendo en cuenta que muchos pacientes aparentemente sanos cursan con diabetes sin saberlo, se realiza prueba de glucosa de manera gratuita a 10 pacientes por día de lunes a viernes, mayores a 50 años, (solo debes asistir a la institución en los horarios de oficina, se recomienda asistir en ayunas o después de 2 o más horas de ingerir alimentos.'
                 },
                 {
-                  title: 'Programa “Los 10 con Ritmo”',
-                  text: 'Para detectar trastornos del ritmo cardiaco como fibrilación auricular y otros problemas cardiovasculares.'
+                  title: 'PROGRAMA “POBLACION INFORMADA”',
+                  text: 'Programa por redes sociales institucionales donde se dará a conocer diferentes temáticas de salud, enfocados en prevención de la enfermedad y temas de interés solicitados por los pacientes.'
                 },
                 {
-                  title: 'Programa “Población Informada”',
-                  text: 'Programa por redes sociales institucionales para divulgar temáticas de salud y promover estilos de vida saludables.'
+                  title: 'PROGRAMA “LOS 10 CON RITMO”',
+                  text: 'Con el fin de detectar trastornos del ritmo cardiaco como fibrilación auricular que es una de las causas de Enfermedad Cerebro Vascular (“trombosis cerebral”) y otras patologías mediante electrocardiograma, se realiza 10 EKG gratuitos por día a pacientes mayores de 50 años,interpretados por especialista en cardiología.'
                 },
                 {
-                  title: 'Programa “Adulto Mayor Sano y Fuerte”',
-                  text: 'Propuesta de actividad física con tutor para el adulto mayor sano, promoviendo el envejecimiento activo y saludable.'
+                  title: 'PROGRAMA “ADULTO MAYOR SANO Y FUERTE”',
+                  text: 'Propuesta de actividad física con tutor para el adulto mayor sano y también para los pacientes con patologías crónicas como Hipertensión arterial, Diabetes, Hipercolesterolemia y Obesidad.'
                 }
               ].map((program, index) => (
                 <div key={index} className="card p-6 bg-gray-50 dark:bg-gray-700 rounded-lg transition-colors duration-300">
@@ -170,7 +172,10 @@ const ServicesPage = () => {
                     'Psicología',
                     'Fisioterapia',
                     'Terapia Ocupacional',
-                    'Y otros servicios de primer nivel'
+                    'Telemedicina – teleorientación',
+                    'Odontología',
+                    'Laboratorio clínico',
+                    'Y otros servicios de primer nivel',
                   ].map((service, index) => (
                     <div key={index} className="flex items-center text-gray-700 dark:text-gray-300 transition-colors duration-300">
                       <div className="w-2 h-2 bg-blue-500 dark:bg-blue-400 rounded-full mr-3 flex-shrink-0"></div>
@@ -196,7 +201,7 @@ const ServicesPage = () => {
                     'Cirugía General',
                     'Pediatría',
                     'Ginecología',
-                    'Radiología',
+                    'Radiología - imágenes diagnósticas no ionizantes y diagnóstico vascular',
                     'Dermatología',
                     'Ortopedia',
                     'Psiquiatría',
@@ -234,15 +239,34 @@ const ServicesPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {
-                title: 'Neurología',
-                text: 'Consulta de neurología, electroencefalograma computarizado, polisomnografía y evaluación integral del sistema nervioso.',
+                title: 'Medicina Alternativa',
+                text: 'Consulta medicina alternativa, Terapia neural, Acupuntura, Homeopatia, Sueroterapia, Ozonoterapia, Campos magnéticos, Medicina tradicional china, Terapia alternativa bioenergética, Medicina funcional.',
+                icon: 'Leaf',
+                color: 'from-green-500 to-emerald-500'
+              },
+              {
+                title: 'Neurología Clínica',
+                text: 'Consulta de neurología, Electroencefalograma computarizado, Polisomnografía, Polisomnograma con titulación de cpap nasal, Monitorización electroencefalográfica por video, (video telemetría), Aplicación de toxina botulínica, Bloqueo de nervio periférico, Prueba de latencia múltiple (procedimiento guiado por ecografía).',
                 icon: 'brain',
                 color: 'from-indigo-500 to-purple-500'
               },
               {
-                title: 'Cardiología - Adultos',
-                text: 'Consulta de cardiología, electrocardiograma (EKG), Holter, MAPA, ecocardiograma y pruebas de esfuerzo especializadas.',
+                title: 'Subespecialidades',
+                text: 'Gastroenterología, Cardiología, Neurología - Epileptología',
+                icon: 'beaker',
+                color: 'from-cyan-500 to-blue-500'
+              },
+              
+              {
+                title: 'Cardiología - Pediátrica',
+                text: 'Holter de ritmo cardiaco 24 horas, Electrocardiograma (ekg), Monitoreo de presion arterial 24 horas (mapa).',
                 icon: 'heart',
+                color: 'from-pink-400 to-rose-500'
+              },
+              {
+                title: 'Cardiología - Adultos',
+                text: 'Consulta de cardiología, Electrocardiograma (ekg), Holter de ritmo cardiaco 24 horas, Monitoreo de presion arterial 24 horas (mapa), Prueba de esfuerzo convencional, Ecocardiograma trastoracico modo M bidimencional doppler color, Ecocardiograma de estrés con ejercicio o farmacologico, Ecocardiograma de contraste en cortocircuitos, Mesa basculante, Rigidez arterial, Test de caminata de 6 minutos.',
+                icon: 'heart-pulse',
                 color: 'from-red-500 to-pink-500'
               }
             ].map((item, index) => (
@@ -258,9 +282,14 @@ const ServicesPage = () => {
                   <h3 className="text-2xl font-heading font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-300 group-hover:text-blue-600 dark:group-hover:text-blue-400">
                     {item.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed transition-colors duration-300">
+                  <ul className="list-disc list-inside text-gray-600 dark:text-gray-300 leading-relaxed transition-colors duration-300 space-y-1">
+                    {item.text.split(',').map((service, i) => (
+                      <li key={i}>{service.trim()}</li>
+                    ))}
+                  </ul>
+                  {/*<p className="text-gray-600 dark:text-gray-300 leading-relaxed transition-colors duration-300">
                     {item.text}
-                  </p>
+                  </p>*/}
                   <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-600">
                     <Link 
                       to={ROUTES.CONTACT}

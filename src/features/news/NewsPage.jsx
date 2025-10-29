@@ -24,9 +24,10 @@ const NewsPage = () => {
   const filteredNews =
     selectedCategory === "Todas"
       ? NEWS_ARTICLES
-      : NEWS_ARTICLES.filter(
-        (article) => article.category === selectedCategory
-      );
+      : NEWS_ARTICLES.filter((article) => article.category === selectedCategory);
+
+  const featuredArticles = filteredNews.filter((a) => a.featured);
+  const regularArticles = filteredNews.filter((a) => !a.featured);
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -35,6 +36,27 @@ const NewsPage = () => {
       month: "long",
       day: "numeric",
     });
+  };
+
+  // utility: get embeddable youtube url if needed
+  const getYouTubeEmbedUrl = (url) => {
+    if (!url) return null;
+    try {
+      const u = new URL(url);
+      // youtube.com/watch?v=ID or youtu.be/ID
+      if (u.hostname.includes('youtu.be')) {
+        const id = u.pathname.slice(1);
+        return `https://www.youtube.com/embed/${id}`;
+      }
+      if (u.hostname.includes('youtube.com')) {
+        return `https://www.youtube.com/embed/${u.searchParams.get('v')}`;
+      }
+      // if already embed url, return as is
+      if (url.includes('embed')) return url;
+      return null;
+    } catch {
+      return null;
+    }
   };
 
   const handleShare = async (article) => {
@@ -229,85 +251,71 @@ const NewsPage = () => {
               {filteredNews.length} {filteredNews.length === 1 ? 'artículo encontrado' : 'artículos encontrados'}
             </p>
           </div>
-
-          {/* News Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredNews.map((article) => (
-              <div 
-                key={article.id} 
-                className="group bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-700 overflow-hidden"
-              >
-                {/* Image Container */}
-                <div className="relative w-full h-48 bg-gray-200 dark:bg-gray-700 overflow-hidden">
-                  <img
-                    src={article.image}
-                    alt={article.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  
-                  {/* Featured Badge */}
-                  {article.featured && (
-                    <div className="absolute top-4 left-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full flex items-center space-x-1">
-                      <FireIcon className="w-3 h-3" />
-                      <span>Destacado</span>
+          {/* Featured Articles (separated) */}
+          {featuredArticles.length > 0 && (
+            <div className="mb-12">
+              <h3 className="text-2xl font-heading font-bold text-gray-900 dark:text-white mb-6">Artículos Destacados</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-6">
+                {featuredArticles.map((article) => (
+                  <div key={article.id} id={`article-${encodeURIComponent(article.id)}`} className="group bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-700 overflow-hidden">
+                    <div className="relative w-full h-56 bg-gray-200 dark:bg-gray-700 overflow-hidden">
+                      <img src={article.image} alt={article.title} className="w-full h-full object-cover" />
                     </div>
-                  )}
-
-                  {/* Category Badge */}
-                  <div className="absolute top-4 right-4 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm text-primary-600 dark:text-primary-400 text-xs font-medium px-3 py-1 rounded-full">
-                    {article.category}
-                  </div>
-                </div>
-
-                {/* Card Content */}
-                <div className="p-6">
-                  {/* Meta Information */}
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center space-x-2">
-                      <CalendarIcon className="w-4 h-4 text-gray-500 dark:text-gray-400" />
-                      <span className="text-sm text-gray-500 dark:text-gray-400">
-                        {formatDate(article.date)}
-                      </span>
-                    </div>
-                    <div className="flex items-center space-x-1 text-gray-500 dark:text-gray-400">
-                      <ClockIcon className="w-4 h-4" />
-                      {/* <span className="text-xs">3 min</span> */}
+                    <div className="p-6">
+                      <div className="flex items-center justify-between mb-3">
+                        <div className="text-sm text-gray-500 dark:text-gray-400">{formatDate(article.date)}</div>
+                        <div className="text-sm text-gray-500 dark:text-gray-400">{article.author}</div>
+                      </div>
+                      <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-2 line-clamp-2">{article.title}</h4>
+                      <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">{article.summary}</p>
+                      <div className="flex justify-end">
+                        <button onClick={() => setSelectedArticle(article)} className="inline-flex items-center space-x-2 bg-yellow-400 hover:bg-yellow-500 text-white font-medium text-sm py-2 px-4 rounded-lg transition-all duration-300">
+                          <span>Leer más</span>
+                          <ArrowRightIcon className="w-4 h-4" />
+                        </button>
+                      </div>
                     </div>
                   </div>
-
-                  {/* Title */}
-                  <h3 className="text-xl font-heading font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300 line-clamp-2">
-                    {article.title}
-                  </h3>
-
-                  {/* Summary */}
-                  <p className="text-gray-600 dark:text-gray-300 mb-6 line-clamp-3 leading-relaxed">
-                    {article.summary}
-                  </p>
-
-                  {/* Footer */}
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-2">
-                      <UserIcon className="w-4 h-4 text-gray-500 dark:text-gray-400" />
-                      <span className="text-sm text-gray-500 dark:text-gray-400">
-                        {article.author}
-                      </span>
-                    </div>
-                    <button
-                      onClick={() => setSelectedArticle(article)}
-                      className="group/btn inline-flex items-center space-x-2 bg-primary-600 hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-600 text-white font-medium text-sm py-2 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-                      aria-label={`Leer artículo completo: ${article.title}`}
-                      type="button"
-                    >
-                      <span>Leer más</span>
-                      <ArrowRightIcon className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
-                    </button>
-                  </div>
-                </div>
+                ))}
               </div>
-            ))}
+            </div>
+          )}
+
+          {/* Regular Articles */}
+          <div>
+            <h3 className="text-2xl font-heading font-bold text-gray-900 dark:text-white mb-6">Otras Noticias</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {regularArticles.map((article) => (
+                <div key={article.id} id={`article-${encodeURIComponent(article.id)}`} className="group bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-700 overflow-hidden">
+                  <div className="relative w-full h-48 bg-gray-200 dark:bg-gray-700 overflow-hidden">
+                    <img src={article.image} alt={article.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                  </div>
+                  <div className="p-6">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center space-x-2">
+                        <CalendarIcon className="w-4 h-4 text-gray-500 dark:text-gray-400" />
+                        <span className="text-sm text-gray-500 dark:text-gray-400">{formatDate(article.date)}</span>
+                      </div>
+                      <div className="flex items-center space-x-1 text-gray-500 dark:text-gray-400">
+                        <ClockIcon className="w-4 h-4" />
+                      </div>
+                    </div>
+                    <h3 className="text-xl font-heading font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300 line-clamp-2">{article.title}</h3>
+                    <p className="text-gray-600 dark:text-gray-300 mb-6 line-clamp-3 leading-relaxed">{article.summary}</p>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-2">
+                        <UserIcon className="w-4 h-4 text-gray-500 dark:text-gray-400" />
+                        <span className="text-sm text-gray-500 dark:text-gray-400">{article.author}</span>
+                      </div>
+                      <button onClick={() => setSelectedArticle(article)} className="group/btn inline-flex items-center space-x-2 bg-primary-600 hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-600 text-white font-medium text-sm py-2 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                        <span>Leer más</span>
+                        <ArrowRightIcon className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Empty State */}
@@ -423,6 +431,22 @@ const NewsPage = () => {
                 </div>
               </div>
 
+              {/* Video embed (if provided) */}
+              {selectedArticle.videoUrl && (
+                <div className="mb-6">
+                  <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                    <iframe
+                      className="absolute inset-0 w-full h-full rounded-lg"
+                      src={getYouTubeEmbedUrl(selectedArticle.videoUrl)}
+                      title={selectedArticle.title}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
+                </div>
+              )}
+
               {/* Article Content - Optimized typography for mobile */}
               <div className="prose prose-sm sm:prose-base md:prose-lg max-w-none dark:prose-invert">
                 <div className="text-gray-700 dark:text-gray-300 whitespace-pre-line leading-relaxed text-base sm:text-lg">
@@ -482,6 +506,17 @@ const NewsPage = () => {
                         </>
                       )}
                     </button>
+                    {/* External Link button - open in new tab if provided */}
+                    {selectedArticle.externalLink && (
+                      <a
+                        href={selectedArticle.externalLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 sm:py-2 rounded-lg bg-white/90 text-primary-700 hover:bg-white transition-colors duration-200 font-medium shadow-sm"
+                      >
+                        <span>Ver fuente</span>
+                      </a>
+                    )}
                     <button 
                       onClick={() => setSelectedArticle(null)}
                       className="w-full sm:w-auto bg-gray-600 hover:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600 text-white px-6 py-3 sm:py-2 rounded-lg transition-colors duration-300 font-medium transform hover:scale-105"
@@ -495,89 +530,6 @@ const NewsPage = () => {
           </div>
         </div>
       )}
-
-      {/* Newsletter CTA Section */}
-      <section className="relative bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 dark:from-primary-800 dark:via-primary-900 dark:to-gray-900 section-padding overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='7' cy='7' r='7'/%3E%3Ccircle cx='53' cy='53' r='7'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }} />
-        </div>
-
-        {/* Decorative Elements */}
-        <div className="absolute top-10 left-10 w-20 h-20 bg-white/10 rounded-full blur-2xl animate-pulse" />
-        <div className="absolute bottom-10 right-10 w-32 h-32 bg-yellow-300/20 rounded-full blur-3xl animate-pulse delay-1000" />
-
-        <div className="container-custom relative z-10">
-          <div className="text-center max-w-4xl mx-auto">
-            <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-6 py-3 mb-8">
-              <SparklesIcon className="w-5 h-5 text-yellow-300" />
-              <span className="text-white/90 font-medium">Mantente Informado</span>
-            </div>
-
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6">
-              No te pierdas
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-orange-300">
-                nuestras novedades
-              </span>
-            </h2>
-            
-            <p className="text-xl md:text-2xl text-white/90 mb-10 leading-relaxed max-w-3xl mx-auto">
-              Síguenos en nuestras redes sociales para estar al día con las últimas noticias, 
-              eventos y actualizaciones de la clínica.
-            </p>
-
-            {/* Social Media Links */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10">
-              <a 
-                href="https://www.facebook.com/share/1JZaSsR1y2/?mibextid=wwXIfr"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-3xl flex items-center space-x-3"
-              >
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                </svg>
-                <span>Síguenos en Facebook</span>
-                <ArrowRightIcon className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-              </a>
-              
-              <a 
-                href="https://www.instagram.com/clinica_norte_especialidades?igsh=enBhN2d4ZTl6Y3l6"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl flex items-center space-x-3"
-              >
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.62 5.367 11.987 11.988 11.987 6.62 0 11.987-5.367 11.987-11.987C24.014 5.367 18.637.001 12.017.001zM8.449 16.988c-1.297 0-2.348-1.051-2.348-2.348 0-1.297 1.051-2.348 2.348-2.348 1.297 0 2.348 1.051 2.348 2.348 0 1.297-1.051 2.348-2.348 2.348zm7.718 0c-1.297 0-2.348-1.051-2.348-2.348 0-1.297 1.051-2.348 2.348-2.348 1.297 0 2.348 1.051 2.348 2.348 0 1.297-1.051 2.348-2.348 2.348z"/>
-                </svg>
-                <span>Síguenos en Instagram</span>
-                <ArrowRightIcon className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-              </a>
-            </div>
-
-            {/* Additional Info */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-                <NewspaperIcon className="w-8 h-8 text-white mx-auto mb-3" />
-                <div className="text-white font-semibold mb-1">Noticias Semanales</div>
-                <div className="text-white/80 text-sm">Actualizaciones constantes</div>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-                <CalendarIcon className="w-8 h-8 text-white mx-auto mb-3" />
-                <div className="text-white font-semibold mb-1">Eventos Especiales</div>
-                <div className="text-white/80 text-sm">Jornadas y actividades</div>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-                <SparklesIcon className="w-8 h-8 text-white mx-auto mb-3" />
-                <div className="text-white font-semibold mb-1">Contenido Exclusivo</div>
-                <div className="text-white/80 text-sm">Tips de salud y bienestar</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
     </div>
     </>

@@ -6,6 +6,7 @@ import Header from './shared/components/layout/Header';
 import Footer from './shared/components/layout/Footer';
 import WhatsAppButton from './shared/components/ui/WhatsAppButton';
 import LoadingSpinner from './shared/components/ui/LoadingSpinner';
+import ScrollToTop from './shared/components/layout/ScrollToTop';
 
 // Lazy load pages for better performance
 const HomePage = lazy(() => import('./features/home/HomePage'));
@@ -31,6 +32,7 @@ const NotFoundPage = lazy(() => import('./shared/components/ui/NotFoundPage'));
 function App() {
   return (
     <Router>
+        <ScrollToTop />
         <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
         <Header />
         
