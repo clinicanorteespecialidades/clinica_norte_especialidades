@@ -28,12 +28,12 @@ import { generateClinicStructuredData, generateLocalBusinessStructuredData } fro
 import LatestNews from '../../shared/components/ui/LatestNews';
 
 // VideoTour component: embeds a YouTube player but does NOT autoplay.
-// Replace YOUTUBE_VIDEO_ID with the actual video id (e.g. 'dQw4w9WgXcQ').
-const YOUTUBE_VIDEO_ID = 'REPLACE_WITH_VIDEO_ID';
+// Replace YOUTUBE_VIDEO_ID with the actual video id (e.g. 'dQw4w9WgXcQ'). https://www.youtube.com/watch?v=3e9Wa3xaO44
+const YOUTUBE_VIDEO_ID = '3e9Wa3xaO44';
 
 function VideoTour() {
   const [showPlayer, setShowPlayer] = useState(false);
-  const poster = '/images/hero/servicios-medicos-especializados.png';
+  const poster = '/images/clinic/clinicanorteespecialidades.png';
   const embedSrc = `https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?rel=0&modestbranding=1&controls=1`;
 
   return (

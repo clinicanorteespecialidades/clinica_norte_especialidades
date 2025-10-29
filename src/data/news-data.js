@@ -28,11 +28,11 @@ Fecha de inscripción: 4 de octubre de 2025 a las 3 PM.
     content: `Consulta el PDF con la información completa y el formulario de inscripción.`,
     date: '2024-01-25',
     category: 'Institucional',
-    image: '/images/news/2025/septiembre/convocatoria_asociacion_usuarios_2025.jpg',
+    image: '/images/news/2025/septiembre/consultorio-medicina-general-equipado.jpg',
     author: 'Gerencia General',
     featured: false,
     externalLink: 'https://example.com/convocatoria-inscripcion.pdf',
-    videoUrl: 'https://www.youtube.com/watch?v=cn-eX18i12c&list=RDcn-eX18i12c&start_radio=1'
+    videoUrl: 'https://www.youtube.com/watch?v=3e9Wa3xaO44'
   },
   {
     id: 'jornada-vacunacion',
