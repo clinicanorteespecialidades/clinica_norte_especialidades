@@ -107,7 +107,7 @@ const Header = () => {
                 </button>
 
                 {isMoreOpen && (
-                  <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5 z-50">
+                  <div className="absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5 z-50">
                     <div className="py-1">
                       {navigation.map((item, idx) => {
                         // render dropdown item only when main item is hidden at this viewport
@@ -128,6 +128,28 @@ const Header = () => {
                           </Link>
                         );
                       })}
+
+                      {/* Divider */}
+                      <div className="border-t border-gray-100 dark:border-gray-700 my-1"></div>
+
+                      {/* Dark mode toggle and Agendar Cita for small screens */}
+                      <div className="block lg:hidden px-4 py-2">
+                        <div className="flex items-center justify-between">
+                          <div className="text-sm text-gray-700 dark:text-gray-200">Tema</div>
+                          <div>
+                            {/* DarkModeToggle can be used directly here */}
+                            <DarkModeToggle />
+                          </div>
+                        </div>
+                      </div>
+
+                      <Link
+                        to={ROUTES.CONTACT}
+                        onClick={() => setIsMoreOpen(false)}
+                        className="block lg:hidden w-full text-center px-4 py-2 text-sm text-white bg-primary-600 hover:bg-primary-700 rounded-md mx-3 my-2"
+                      >
+                        Agendar Cita
+                      </Link>
                     </div>
                   </div>
                 )}
@@ -135,8 +157,8 @@ const Header = () => {
             </div>
           </div>
 
-          {/* Contact Button & Dark Mode Toggle (kept visible) */}
-          <div className="flex items-center space-x-4">
+          {/* Contact Button & Dark Mode Toggle (visible only on lg+) */}
+          <div className="hidden lg:flex items-center space-x-4">
             <DarkModeToggle />
             <Link
               to={ROUTES.CONTACT}
@@ -147,9 +169,6 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Note: removed full-screen mobile hamburger menu. The responsive nav above
-            progressively hides items and uses the "Más..." dropdown to surface hidden links.
-        */}
       </nav>
     </header>
   );
