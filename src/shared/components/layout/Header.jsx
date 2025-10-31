@@ -169,9 +169,6 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Note: removed full-screen mobile hamburger menu. The responsive nav above
-            progressively hides items and uses the "Más..." dropdown to surface hidden links.
-        */}
       </nav>
     </header>
   );
