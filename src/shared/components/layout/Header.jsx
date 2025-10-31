@@ -146,7 +146,7 @@ const Header = () => {
                       <Link
                         to={ROUTES.CONTACT}
                         onClick={() => setIsMoreOpen(false)}
-                        className="block lg:hidden w-full text-center px-4 py-2 text-sm text-white bg-primary-600 hover:bg-primary-700 rounded-md mx-3 my-2"
+                        className="block lg:hidden w-auto text-center px-4 py-2 text-sm text-white bg-primary-600 hover:bg-primary-700 rounded-md mx-3 my-2"
                       >
                         Agendar Cita
                       </Link>
