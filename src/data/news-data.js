@@ -18,7 +18,7 @@ Fecha de inscripción: 4 de octubre de 2025 a las 3 PM.
     category: 'Institucional',
     image: '/images/news/2025/septiembre/convocatoria_asociacion_usuarios_2025.jpg',
     author: 'Gerencia General',
-    featured: true
+    featured: false
   },
   // Example external link for the first article (opens in new tab from modal)
   {
@@ -85,7 +85,7 @@ Estos convenios entran en vigencia a partir del 1 de marzo de 2024.
     category: 'Convenios',
     image: '/images/news/2025/septiembre/jornada-salud-preventiva-comunidad.jpg',
     author: 'Área Administrativa',
-    featured: true
+    featured: false
   },
   {
     id: 'telemedicina',
