@@ -117,8 +117,8 @@ Para acceder al servicio, agenda tu cita a través de nuestra página web o lín
   },
   {
     id: 'ejemplo',
-    title: 'EJEMPLO DE NOTICIA EN PAGINA',
-    summary: 'RESUMEN DE LA NOTICIA A PUBLICAR.',
+    title: 'EJEMPLO MODIFICADO',
+    summary: 'MODIFICADO RESUMEN DE LA NOTICIA A PUBLICAR.',
     content: `
 TODO LO   QUE SE AGREGE ES LA DESCRIPCION TOTAL DE LA NOTICIA
 1. LOKJAD
