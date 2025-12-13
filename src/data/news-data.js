@@ -113,8 +113,27 @@ Para acceder al servicio, agenda tu cita a través de nuestra página web o lín
     category: 'Tecnología',
     image: '/images/news/2025/septiembre/ampliacion-horarios-atencion-medica.jpg',
     author: 'Departamento de Sistemas',
-    featured: false
+    featured: false //TRUE ES PARA QUE ESTE EN DESTACADAS
+  },
+  {
+    id: 'ejemplo',
+    title: 'EJEMPLO DE NOTICIA EN PAGINA',
+    summary: 'RESUMEN DE LA NOTICIA A PUBLICAR.',
+    content: `
+TODO LO   QUE SE AGREGE ES LA DESCRIPCION TOTAL DE LA NOTICIA
+1. LOKJAD
+2. SDJKFB ASD
+3.KNJKLJFH DN
+
+    `,
+    date: '2025-12-13',
+    category: 'Institucional',
+    image: '/images/news/2026/LOGOCN.png',
+    author: 'SISTEMAS',
+    featured: true,
+    externalLink: '/images/news/PDF/PRUEBA.pdf'
   }
+
 ];
 
 // Categorías de noticias
