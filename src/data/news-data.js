@@ -116,22 +116,26 @@ Para acceder al servicio, agenda tu cita a través de nuestra página web o lín
     featured: false //TRUE ES PARA QUE ESTE EN DESTACADAS
   },
   {
-    id: 'ejemplo',
-    title: 'EJEMPLO MODIFICADO',
-    summary: 'MODIFICADO RESUMEN DE LA NOTICIA A PUBLICAR.',
+    id: 'asociacionusuario',
+    title: 'INVITA A PARTICIPAR CREACION DE LA ASOCIACIÓN DE USUARIOS',
+    summary: 'INVITA A PARTICIPAR CREACION DE LA ASOCIACIÓN DE USUARIOSLa Clínica Norte Especialidades S.A.S. invita a sus afiliados a participar en la conformación de la Asociación de Usuarios, un espacio de participación ciudadana para fortalecer la calidad y humanización en la atención en salud.',
     content: `
-TODO LO   QUE SE AGREGE ES LA DESCRIPCION TOTAL DE LA NOTICIA
-1. LOKJAD
-2. SDJKFB ASD
-3.KNJKLJFH DN
+La Clínica Norte Especialidades S.A.S. invita cordialmente a toda la población afiliada a participar en el proceso de creación y elección de la Asociación de Usuarios de la Clínica.
+
+La Asociación de Usuarios es un espacio de participación ciudadana que permite a los afiliados ejercer veeduría, acompañar la prestación de los servicios de salud y contribuir al mejoramiento continuo, la calidad y la humanización en la atención.
+
+La participación activa de los usuarios es fundamental para fortalecer la comunicación entre la institución y la comunidad, garantizando una atención oportuna, eficiente y de calidad.
+
+La jornada se llevará a cabo el miércoles 17 de diciembre de 2025, a las 4:00 p.m., en las instalaciones de la Clínica Norte Especialidades.
+
+Invitamos a todos los afiliados interesados a asistir y hacer parte de este importante espacio de participación ciudadana.
 
     `,
-    date: '2025-12-13',
-    category: 'Institucional',
-    image: '/images/news/2026/LOGOCN.png',
-    author: 'SISTEMAS',
-    featured: true,
-    externalLink: '/images/news/PDF/PRUEBA.pdf'
+    date: '2025-12-17',
+    category: 'Eventos',
+    image: '/images/news/2025/ASOCIACIONUSUARIO.png',
+    author: 'Clínica Norte Especialidades S.A.S',
+    featured: true
   }
 
 ];
