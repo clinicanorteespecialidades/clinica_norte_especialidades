@@ -164,7 +164,7 @@ Invitamos a todos los afiliados interesados a asistir y hacer parte de este impo
     category: 'Eventos',
     image: '/images/news/2025/ASOCIACIONUSUARIO.png',
     author: 'Clínica Norte Especialidades S.A.S',
-    featured: true
+    featured: false
   }
 
 ];
