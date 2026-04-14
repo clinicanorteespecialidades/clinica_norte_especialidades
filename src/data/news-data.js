@@ -1,6 +1,35 @@
 // Noticias de la clínica (contenido estático)
 export const NEWS_ARTICLES = [
   {
+    id: 'Asociacion de Usuarios',
+    title: 'Convoca a la ciudadania a conformar parte de la Asociación de Usuarios',
+    summary: 'Invitamos a todos los usuarios a participar en la conformación de nuestra Asociación de Usuarios para fortalecer la comunicación y mejorar nuestros servicios.',
+    content: `
+INVITA A PARTICIPAR CREACION DE LA ASOCIACIÓN DE USUARIOS
+
+La Clínica Norte Especialidades S.A.S. invita cordialmente a toda la población afiliada del FOMAG y de la EPS Mallamas a participar en el proceso de elección de la Asociación de Usuarios de la Clínica.
+
+La Asociación de Usuarios es un espacio de participación ciudadana que permite a los afiliados ejercer veeduría, acompañar la prestación de los servicios de salud y contribuir al mejoramiento continuo, la calidad y la humanización en la atención.
+
+Tu participación es fundamental para fortalecer la comunicación entre los usuarios y la institución, y para garantizar una atención oportuna y de calidad.
+
+Fecha: jueves 16 de abril de 2026
+Hora: 4:00 p.m.
+Lugar: Clínica Norte Especialidades
+
+Invitamos a todos los afiliados interesados a asistir y hacer parte activa de este importante espacio de participación.
+
+¡Los esperamos!
+
+CLÍNICA NORTE DE ESPECIALIDADES S.A.S.
+    `,
+    date: '2026-04-13',
+    category: 'Institucional',
+    image: '/images/news/2026/abril/noticia.jpg',
+    author: 'Gerencia General',
+    featured: true
+  },
+  {
     id: 'Convocatoria Asociacion de Usuarios',
     title: 'Convoca a la ciudadania a conformar parte de la Asociación de Usuarios',
     summary: 'Invitamos a todos los usuarios a participar en la conformación de nuestra Asociación de Usuarios para fortalecer la comunicación y mejorar nuestros servicios.',
